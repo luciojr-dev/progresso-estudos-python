@@ -6,7 +6,6 @@ def calcular_gastos(gastos):
     for gastos in gastos:
         total_gasto = total_gasto + gastos
 
-    /return total_gasto
-
+    return total_gasto
 resultado = calcular_gastos(gastos)
 print(resultado)
