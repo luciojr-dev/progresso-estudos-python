@@ -1,5 +1,10 @@
+# Entendendo funçoes
+#------------------------
+
+#cria uma lista
 gastos = [100, 250, 350]
 
+# define uma funçao
 def calcular_gastos(gastos):
     total_gasto = 0
 

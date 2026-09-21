@@ -1,5 +1,5 @@
 # ==========================================
-# MINI FINANCEIRO
+# MINI FINANCEIRO - EXERCICIO PARA MOSTRAR TUDO QUE ESTOU ESTUDANDO E APRENDENDO EM UM MINI SISTEMA PARA FINANÇAS PESSOAIS
 # ==========================================
 
 
@@ -12,7 +12,7 @@ def calcular_total_gastos(gastos):
     total_gastos = 0
 
     for gasto in gastos:
-        total_gastos = total_gastos + gasto
+        total_gastos = total_gastos + gasto["valor"]
 
     return total_gastos
 
@@ -29,9 +29,10 @@ def calcular_saldo(salario, total_gasto):
 
 # Pega nome, salario do usuario e quantidade de gastos
 nome_pessoa = input("Digite seu nome: ")
+
 salario = float(input("Digite seu salario: "))
-quantidade_gastos = int(
-    input(f"Quantos gastos deseja cadastrar {nome_pessoa}: ")
+
+quantidade_gastos = int(input(f"Quantos gastos deseja cadastrar: ")
 )
 
 
@@ -44,9 +45,17 @@ gastos = []
 
 # Adiciona gastos na lista
 for numero in range(quantidade_gastos):
-    gasto = float(input(f"Digite o gasto {numero + 1}: "))
-    gastos.append(gasto)
+    descricao = input("Digite a descriçao: ")
+    valor = float(input("Digite o valor: "))
+    categoria = input("Digite a categoria: ")
 
+    # criar uma dict para armazernar informaçoes
+    gasto = {
+    "descriçao": descricao,
+    "valor": valor,
+    "categoria": categoria
+}
+    gastos.append(gasto)
 
 # ==========================================
 # PROCESSAMENTO
@@ -67,20 +76,32 @@ saldo = calcular_saldo(salario, resultado)
 # ==========================================
 
 # Compara se o usuario gasta mais do que ganha
-if saldo < 0:
-    print(
-        f"{nome_pessoa} voce esta no negativo. "
-        f"Seu saldo é {saldo}"
-    )
+def gerar_resumo(nome_pessoa, total_gastos, saldo ):
+    if saldo < 0:
+        mensagem =(
+            f"{nome_pessoa} voce esta no negativo. "
+            f"Seu saldo é {saldo}"
+        )
+    elif saldo == 0:
+        mensagem =(
+            f"{nome_pessoa} voce gastou todo o seu salario "
+            f"seu saldo é{saldo}"
+        )
+    else:
+        mensagem = (
+            f"{nome_pessoa} voce esta gastando menos do que recebe "
+            f"seu saldo é {saldo}"
+        )
+    return mensagem
 
-elif saldo == 0:
-    print(
-        f"{nome_pessoa} voce gastou todo o seu salario. "
-        f"Seu saldo é {saldo}"
-    )
+resumo = gerar_resumo(nome_pessoa, resultado, saldo)
+print(resumo)
 
-else:
+
+for gasto in gastos:
     print(
-        f"{nome_pessoa} voce esta gastando menos do que recebe, "
-        f"seu saldo é {saldo}"
+        f"{gasto["descriçao"]} - "
+        f"R$ {gasto["valor"]} -"
+        f"{gasto["categoria"]}"
+
     )

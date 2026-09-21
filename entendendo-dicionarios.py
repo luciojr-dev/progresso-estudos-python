@@ -1,79 +1,111 @@
+# Entendendo dicionarios
+# entendimento: nome -> seria uma chave e o valor seria -> Lucio
+
+
+# ==========================================
+# Exercicio 1
+# ==========================================
+
 # cria um dicionario
-# entendimento: nome -> seria uma chave e o valor seria -> lucio
+pessoa = {
+    "nome": "Lucio",
+    "idade": 21,
+    "profissao": "programador",
+    "salario": 8000
+}
 
-# exercicio 1
-# pessoa = {
-#     "nome": "Lucio",
-#     "idade": 21,
-#     "profissao": "programador",
-#     "salario": 8000
-# }
-# # altera o valor existente
-# pessoa["profissao"] = "desenvolvedor"
-# pessoa["salario"] = 9000
+# altera o valor existente
+pessoa["profissao"] = "desenvolvedor"
+pessoa["salario"] = 9000
 
-# # inseri uma nova chave no dicionario
-# pessoa["cidade"] = "Sao paulo"
+# inseri uma nova chave no dicionario
+pessoa["cidade"] = "Sao Paulo"
 
-# print(pessoa["profissao"])
-# print(pessoa["salario"])
+print(pessoa["profissao"])
+print(pessoa["salario"])
 
-# exercicio 2
+
+# ==========================================
+# Exercicio 2
+# ==========================================
 
 # cria o dicionario
-# produto = {
-#     "nome":"iphone",
-#     "preco": 5000,
-#     "categoria": "eletronicos"
-# }
+produto = {
+    "nome": "iphone",
+    "preco": 5000,
+    "categoria": "eletronicos"
+}
 
-# produto["preco"] = 8000
-# produto["estoque"] = 10
+produto["preco"] = 8000
+produto["estoque"] = 10
 
-# print(produto["nome"], produto["preco"], produto["estoque"])
+print(produto["nome"], produto["preco"], produto["estoque"])
 
-# entendimento de dicionarios com for
+
+# ==========================================
+# Entendimento de dicionarios com for
+# ==========================================
+
 # for que percorre somente as chaves
-# for item in produto:
-#     print(item)
+for item in produto:
+    print(item)
 
-# # for pegando somente os valores
-# for item in produto.values():
-#     print(item)
+# for pegando somente os valores
+for item in produto.values():
+    print(item)
 
-# # for pegando chave e valor
-# for chave, valor in produto.items():
-#     print(chave, valor)
+# for pegando chave e valor
+for chave, valor in produto.items():
+    print(chave, valor)
 
-# exercicio 3
-# for chave, valor in produto.items():
-#     print(chave, valor)
 
-# verificando se uma chave existe
-# obs: quando fazemos preco in produto -> estamos procurando uma chave, nao valor
-# if "preco" in produto:
-#     print("produto possui preco cadastrado")
-# else:
-#     print("preco nao esta cadastrado")
+# ==========================================
+# Exercicio 3
+# ==========================================
 
-# # verificando em valores
-# if 8000 in produto.values():
-#     print("valor existe dentro de produtos")
-# else:
-#     print("valor nao existe")
+for chave, valor in produto.items():
+    print(chave, valor)
 
-# # execicio 4
-# if "preco" in produto:
-#     print("o preco esta cadastrado")
-# else:
-#     print("preco nao cadastrado")
 
-# if "estoque" in produto:
-#     print("o estoque esta cadastrado")
-# else:
-#     print("estoque nao cadastrado")
+# ==========================================
+# Verificando se uma chave existe
+# ==========================================
 
-# exercicio 5
+# obs: quando fazemos "preco" in produto
+# estamos procurando uma chave, nao um valor
+
+if "preco" in produto:
+    print("produto possui preco cadastrado")
+else:
+    print("preco nao esta cadastrado")
+
+
+# verificando em valores
+if 8000 in produto.values():
+    print("valor existe dentro de produtos")
+else:
+    print("valor nao existe")
+
+
+# ==========================================
+# Exercicio 4
+# ==========================================
+
+if "preco" in produto:
+    print("o preco esta cadastrado")
+else:
+    print("preco nao cadastrado")
+
+if "estoque" in produto:
+    print("o estoque esta cadastrado")
+else:
+    print("estoque nao cadastrado")
+
+
+# ==========================================
+# Exercicio 5
+# ==========================================
+
 produto = {
     "nome": "Notebook",
     "preco": 4500,
@@ -82,10 +114,16 @@ produto = {
 }
 
 for chave, valor in produto.items():
+
     if chave == "preco":
         print(f"o produto custa {valor}")
+
     elif chave == "estoque":
-        if valor > 0 :
+
+        # segunda pergunta:
+        # se a chave for estoque, verificamos se o valor
+        # do estoque e maior que zero
+        if valor > 0:
             print("produto disponivel")
         else:
             print("produto indisponivel")
