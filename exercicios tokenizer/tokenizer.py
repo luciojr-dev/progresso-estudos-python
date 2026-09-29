@@ -1,4 +1,4 @@
-from transformers import AutoTokenizer, AutoModel 
+from transformers import AutoTokenizer, AutoModel
 import torch
 
 tokenizer = AutoTokenizer.from_pretrained("HuggingFaceTB/SmolLM-135M")
@@ -6,12 +6,15 @@ tokenizer = AutoTokenizer.from_pretrained("HuggingFaceTB/SmolLM-135M")
 texto = input("Digite alguma coisa: ")
 
 tokens = tokenizer.tokenize(texto)
+
 ids = tokenizer.convert_tokens_to_ids(tokens)
 
 print(tokens)
+
 print(ids)
 
 input_ids = torch.tensor([ids])
+
 print(input_ids)
 
 model = AutoModel.from_pretrained("HuggingFaceTB/SmolLM-135M")
@@ -19,4 +22,38 @@ model = AutoModel.from_pretrained("HuggingFaceTB/SmolLM-135M")
 embedding_layer = model.get_input_embeddings()
 
 embedding = embedding_layer(input_ids)
+
 print(embedding)
+
+
+# Self-Attention - primeira etapa
+
+Q = embedding
+K = embedding
+V = embedding
+
+print("\nQ:")
+print(Q)
+
+print("\nK:")
+print(K)
+
+print("\nV:")
+print(V)
+
+# Self-Attention para todos os tokens
+
+scores = Q @ K.transpose(-2, -1)
+
+print("\nScores:")
+print(scores)
+
+pesos = torch.softmax(scores, dim=-1)
+
+print("\nPesos de atenção:")
+print(pesos)
+
+output = pesos @ V
+
+print("\nNovo vetor:")
+print(output)
